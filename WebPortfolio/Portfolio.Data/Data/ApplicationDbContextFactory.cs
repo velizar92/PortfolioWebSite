@@ -13,9 +13,9 @@ namespace Portfolio.Infrastructure.Data
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            // Determine path to settings file
             var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
-            var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), $"appsettings.{environment}.json");
+            var webProjectPath = Path.Combine(Directory.GetCurrentDirectory(), "..", "Portfolio.Web"); // adjust if needed
+            var jsonFilePath = Path.Combine(webProjectPath, $"appsettings.{environment}.json");
 
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile(jsonFilePath, optional: false, reloadOnChange: true)
